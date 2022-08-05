@@ -376,6 +376,7 @@ function CreateDividedUser(props) {
     const handleChangeDirector = (value) => {
         try{
             const director = client1?.company?.directorDetails?.find(director => director.id = value)
+            console.log(director)
             setSelectedDirector(director.id)
         }catch{
             const director = client1?.customerClients?.find(director => director.customerInfo.userInfo.id = value)
@@ -385,6 +386,7 @@ function CreateDividedUser(props) {
     };
 
     return (
+        
         <div>
             <Div>
                 <FuseAnimate animation="transition.slideUpIn" delay={300}>
@@ -601,7 +603,7 @@ function CreateDividedUser(props) {
                                 </Grid>
                                 <Grid item xs={12} sm={4}>
                                     Amount Payable
-                                    <br/>
+                                       <br/>
                                     <TextField
                                         fullWidth={true}
                                         onChange={(e)=>{
