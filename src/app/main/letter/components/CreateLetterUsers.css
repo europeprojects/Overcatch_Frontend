@@ -1,0 +1,25 @@
+.create__letter-user{
+    display: flex;
+    height: 100%;
+}
+
+.create__letter-user > .letter__content{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.create__letter-user > .letter__content > .customize__pdf{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.create__letter-user > .letter__content > .customize__pdf >.customize__item{
+    margin-right: 25px;
+}
+
+.pdf__dialog .show__pdf{
+    height: 100%;
+}

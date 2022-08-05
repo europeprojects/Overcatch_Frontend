@@ -1,0 +1,40 @@
+import React from "react";
+
+const locale = {
+    BUSINESSNAME:"Business Name",
+    STARTDATE:"Start Date",
+    ENDDATE:"End Date",
+    CLIENTTYPE:"Client Type",
+    DESCRIPTION:"Description",
+    PRIORITY:"Priority",
+    FILENAME:"File Name",
+    CREATEDATETIME:"Create Date",
+    PLEASESELECT:"Please Select",
+    SELECTBANK:"Select Bank",
+    MULTIPLEAMOUNT:"Multiple Amount",
+    SINGLEAMOUNT:"Single Amount",
+    UPLOAD:"Upload",
+    SAVE:"Save",
+    AMOUNTTYPE:"Amount Type",
+    TRANSACTIONTYPE:"Transaction Type",
+    MONEYIN:"Money In",
+    MONEYOUT:"Money Out",
+    BALANCE:"Balance",
+    PROCESSDATE:"Process Date",
+    EXPORTCSV:"Export to CSV",
+    TRANSACTIONDETAIL:"Transaction Detail",
+    AMOUNT:"Amount",
+    BANKNAME:"Bank Name",
+    TOTALMONEYIN:"Total Money In",
+    TOTALMONEYOUT:"Total Money Out",
+    PLEASEUPLOADPDFFILEONLY:"Please Upload PDF File Only",
+    BANKSTATEMENTEXCELEXPORT:"Bank Statement Excel Export",
+    DOWNLOAD:"Download",
+    ACCOUNT:"Account",
+    BUSINESS:"Business",
+    SELECTCLIENTTYPE:"Select Client Type",
+    CLIENTADDEDSUCCESFULLY:"'s client is added succesfully",
+    MAKECOMPANYAPPLICATION: "Please make your company application before entering this page.If you have completed, please login again."
+};
+
+export default locale;
