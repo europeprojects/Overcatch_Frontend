@@ -255,13 +255,13 @@ export const directorDetailSheme1 = yup.object({
 });
 
 export const homeAdresFormSheme = yup.object({
-	country1: yup.string(),
-	district1: yup.string(),
-	number1: yup.string(),
-	street1: yup.string(),
+	country1: yup.string().required('Please enter country code'),
+	district1: yup.string().required('Please enter district code'),
+	number1: yup.string().required('Please enter number code'),
+	street1: yup.string().required('Please enter street code'),
 	county1: yup.string(),
-	city1: yup.string(),
-	postcode1: yup.string(),
+	city1: yup.string().required('Please enter city code'),
+	postcode1: yup.string().required('Please enter postcode code'),
 	country2: yup.string(),
 	district2: yup.string(),
 	number2: yup.string(),
@@ -269,13 +269,13 @@ export const homeAdresFormSheme = yup.object({
 	county2: yup.string(),
 	city2: yup.string(),
 	postcode2: yup.string(),
-	country3: yup.string(),
-	district3: yup.string(),
-	number3: yup.string(),
-	street3: yup.string(),
+	country3: yup.string().required('Please enter country code'),
+	district3: yup.string().required('Please enter district code'),
+	number3: yup.string().required('Please enter number code'),
+	street3: yup.string().required('Please enter street code'),
 	county3: yup.string(),
-	city3: yup.string(),
-	postcode3: yup.string()
+	city3: yup.string().required('Please enter city code'),
+	postcode3: yup.string().required('Please enter postcode code')
 });
 
 export const supportPageSheme = yup.object({
