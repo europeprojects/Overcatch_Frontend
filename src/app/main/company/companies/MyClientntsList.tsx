@@ -395,7 +395,7 @@ export default function MyClientsCompanyList(props: any) {
                             {client.agreementType}
                                 </TableCell>
                                 <TableCell  padding="default">
-                            {client.vatNumber!==null ?client.vatNumber:("...")}
+                            {client.vatNumber!==null ? client.vatNumber:("...")}
                                 </TableCell>
 
                             {client?.company ? (

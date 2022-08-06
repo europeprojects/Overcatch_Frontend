@@ -122,6 +122,7 @@ function ColorlibStepIcon(props) {
 }
 
 function CompanyDetail(props: any) {
+    console.log("CompanyDetail(props",props);
     const {t} = useTranslation('companyApplications');
     //@ts-ignore
     const routingData = history.location.displayRouteData;
@@ -221,8 +222,9 @@ function CompanyDetail(props: any) {
             } )
 
             api.getClient(routingData?.clientId).then(response => {
-
+                console.log("***** companyDetail response ",response);
                 setClient(response);
+                console.log("client.vatNumber: ",client.vatNumber)
 
                 const {company,addressList,customerClients, founderOwner, documents , addressNewList} = response;
                 if (company != null) {
@@ -231,6 +233,8 @@ function CompanyDetail(props: any) {
                 }
                 setCustomerClients(customerClients);
                 setDocumentsList(documents)
+                console.log("CompanyDetail founderOwner",founderOwner)
+                console.log("founderOwnerNEw***************",company.directorDetails[0].maritalStatus)
                 if (founderOwner != null) {
                     setFounderOwner(founderOwner);
                 } else {
@@ -687,7 +691,7 @@ function CompanyDetail(props: any) {
                                                                 <td>
                                                                     <TextField onChange={(e) => handleCompany(e)}
                                                                                variant="outlined"
-                                                                               name="authentication"
+                                                                               name="vatNumber"
                                                                                disabled={isEditable === true ? false : true}
                                                                                id="outlined-disabled"
                                                                                value={company?.vatNumber}/>
@@ -704,12 +708,13 @@ function CompanyDetail(props: any) {
                                                                 </td>
                                                                 <td>
                                                                     <TextField onChange={(e) => handleCompany(e)}
-                                                                               variant="outlined" name="vatNumber"
+                                                                               variant="outlined" name="vatPeriod"
                                                                                disabled={isEditable === true ? false : true}
                                                                                id="outlined-disabled"
                                                                                value={company?.vatPeriod}/>
 
                                                                 </td>
+                                                                {console.log("*********company?.vatPeriod",company?.vatPeriod)}
                                                             </tr>
                                                             </tbody>
                                                         </table>
