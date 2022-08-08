@@ -6,8 +6,10 @@ import CompanyList from "./CompanyList";
 import CompanyListHeader from "./CompanyListHeader";
 import {Client} from "../../../types/UserModel";
 
+
 function Companies(props: any) {
 	const [clientList, setClientList] = useState<Client[]>([]);
+	const [clientListResult, setClientListResult] = useState<Client[]>([]);
 	const [clients, setClients] = useState<Client[]>([]);
 	const [search, setSearch] = useState<string>("");
 	const [page, setPage] = React.useState(0);
@@ -18,46 +20,106 @@ function Companies(props: any) {
 	const [state, setState] = React.useState('')
 	const [exist, setExist] = React.useState('')
 
-	useEffect(()=>{
+/* 	useEffect(()=>{
 		setSearch("")
 		setAggrementType([])
 		setClientType([])
-	},[])
+	},[]) */
 
 	/*function handleClick(){
 		getCompaniesByFilter(aggrementType, clientType,exist , state,search, page, rowsPerPage)
 	}*/
 	function handleChange(){
-		getCompaniesByFilter(aggrementType, clientType,exist , state,search, page, rowsPerPage)
+		console.log("******handleChange")
+		console.log("**** client list length", clientList.length)
+		getCompaniesByFilter(aggrementType, clientType,exist , state,search, page, rowsPerPage) 
+	}
+//directorDetails,name,clientName,addressList
+	let findContent = (jsonArr, searchedItem) => {
+		const result =  ["name","clientName"]
+		
+		  if(result.length > 0){
+			setClientList(result as unknown as Client[])
+		  }
+	 
+	 console.log("fuseresult---------",result)
+	 console.log("CLİENT LİST SETLENİYOR",result.length)
 	}
 
-
+	const findInArray = (array, searchRegExp, fields) => {
+		return array.filter((item) => {
+			// returs true if at least one of fields value match to regexp
+			return fields.map((field) => searchRegExp.test(item[field])).some(search);
+		});
+	};
+	
 	function handleClear(){
-
+		console.log("CLEARRRRRR------------------------------")
+setClientList(clientListResult)
 		setSearch("")
 		setAggrementType([])
 		setClientType([])
-		getCompaniesByFilter(aggrementType, clientType,exist , state,search, page, rowsPerPage)
+		//getCompaniesByFilter(aggrementType, clientType,exist , state,search, page, rowsPerPage)
 	}
 	function getCompaniesByFilter(aggrementType, clientType,exist , state,search, page, rowsPerPage){
+		
+	if(clientList.length === 0){
+		console.log("******getCompaniesByFilterSEARCH",search)
+		console.log("******getCompaniesByFilterAGREMENTYPE",aggrementType)
+		console.log("******getCompaniesByFilterCLİENTTYPE",clientType)
 		api.getApplyCompaniesByFilter(aggrementType, clientType,exist , state, search).then(response => {
+			console.log("******NEW SEARCH",search)
+			console.log(findInArray(clientList, /EMRE/, ["Id", "Name"]));
+			console.log("",response[0])
+			
+			console.log("******response--------------------------------",response.length)
 			setClientList(response);
+			setClientListResult(response)
+			console.log("*****setClientList(response)")
 			setClients(response);
+			console.log("******setClients(response);")
 			setTotalElements(response.totalElements);
+			console.log("*****setTotalElements(response.totalElements);")
 		});
+
+	}
+	else {
+		console.log("CLİEN LİST DOLUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU=>",clientList.length)
+		//findContent(clientList,search)
+		const filteredArray = clientList.filter((row) => {
+			let rest = row.clientName?.toLowerCase().includes(search.toLowerCase());
+			if(!rest){
+				
+				return row.company?.directorDetails[0]?.name?.toLowerCase().includes(search.toLowerCase());
+			}
+			else{
+				return rest;
+			}
+		  });
+		  if(filteredArray.length > 0){
+			setClientList(filteredArray);
+		  }
+		 
+		console.log("------filteredArray-----",filteredArray.length)
+	
+	}
+		
 	}
 
-	useEffect(() => {
+useEffect(()=> {
+	handleChangePage(page);
+	console.log("*****RENDER RENDER RENDER******************",search)
+},[])
+
+	/* useEffect(() => {
+		console.log("*****USEEFFECT")
 		getCompaniesByFilter(aggrementType, clientType,exist , state,search, page, rowsPerPage);
-	}, [aggrementType, clientType]);
-	useEffect(() => {
-		getCompaniesByFilter(aggrementType, clientType,exist , state,search, page, rowsPerPage);
-	}, [page]);
-	useEffect(() => {
-		getCompaniesByFilter(aggrementType, clientType,exist , state,search, page, rowsPerPage);
-	}, [rowsPerPage]);
+	}, [aggrementType, clientType]); */
+	
 	 function handleChangePage(page) {
-		 getCompaniesByFilter(aggrementType, clientType,exist , state,search, page, rowsPerPage);
+		console.log("*******HANDLECHANGEPAGE")
+
+		getCompaniesByFilter(aggrementType, clientType,exist , state,search, page, rowsPerPage);
 	 }
 	return (
 		<FusePageCarded
