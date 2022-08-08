@@ -793,9 +793,9 @@ export default function CompanyTable(props: any) {
                                         >
                                             {userRole[0] !== 'CUSTOMER' && (
                                                 <TableCell scope="row">
-                                                    {client.customerClients[0].customerInfo.userInfo.name +
+                                                    {client?.customerClients[0]?.customerInfo?.userInfo?.name +
                                                     ' ' +
-                                                    client.customerClients[0].customerInfo.userInfo.surname}
+                                                    client?.customerClients[0]?.customerInfo?.userInfo?.surname}
                                                 </TableCell>
                                             )}
 
@@ -807,21 +807,21 @@ export default function CompanyTable(props: any) {
                                             </TableCell>
 
                                             <TableCell>
-                                                {client.agreementType == null ? '...' : client.agreementType}
+                                                {client?.agreementType == null ? '...' : client?.agreementType}
                                             </TableCell>
                                         
-                                            <TableCell>{client.isExisting === true ? t('EXIST') : t('NEW')}</TableCell>
+                                            <TableCell>{client?.isExisting === true ? t('EXIST') : t('NEW')}</TableCell>
 
                                             <TableCell>
                                                 <i>
-                                                    <b>{client.payment} £(Pound)</b>
+                                                    <b>{client?.payment} £(Pound)</b>
                                                 </i>
                                             </TableCell>
                                             <TableCell>
-                                                {client.state == 0 && <Status id={'0'} />}
-                                                {client.state == 1 && <Status id={'1'} />}
-                                                {client.state == 2 && <Status id={'2'} />}
-                                                {client.state == 3 && <Status id={'3'} />}
+                                                {client?.state == 0 && <Status id={'0'} />}
+                                                {client?.state == 1 && <Status id={'1'} />}
+                                                {client?.state == 2 && <Status id={'2'} />}
+                                                {client?.state == 3 && <Status id={'3'} />}
                                             </TableCell>
                                             <TableCell>
                                                 {/*<Button*/}
