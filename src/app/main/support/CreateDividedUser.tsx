@@ -474,7 +474,7 @@ function CreateDividedUser(props) {
                             &&
                             {client1?.customerClients?.length > 0 ? (
                                     client1?.customerClients?.map((result)=>(
-                                        <MenuItem value={result.customerInfo.userInfo.id} >{result.customerInfo.userInfo.name + " " + result.customerInfo.userInfo.surname + " owner"}</MenuItem>
+                                        <MenuItem value={result?.customerInfo?.userInfo?.id} >{result?.customerInfo?.userInfo?.name + " " + result?.customerInfo?.userInfo?.surname + " owner"}</MenuItem>
                                     ))
                                 ) : null
                             }
