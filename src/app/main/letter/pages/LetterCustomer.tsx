@@ -535,7 +535,7 @@ function LetterCustomer(props: any) {
                                             {
                                                 client?.customerClients?.length > 0 ? (
                                                     client?.customerClients?.map((result)=>(
-                                                        <MenuItem value={result.id} >{result.customerInfo.userInfo.name + " " + result.customerInfo.userInfo.surname + " owner"}</MenuItem>
+                                                        <MenuItem value={result?.id} >{result?.customerInfo?.userInfo?.name + " " + result?.customerInfo?.userInfo?.surname + " owner"}</MenuItem>
                                                     ))
                                                 ) : null
                                             }
