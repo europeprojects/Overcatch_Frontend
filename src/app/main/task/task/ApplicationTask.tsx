@@ -197,10 +197,10 @@ function ApplicationTask(props: any) {
 
                 customerClients.map(customerResponse => {
                     console.log(customerResponse.customerInfo);
-                    customerResponse.customerInfo.userInfo.brpExpireDate = customerResponse.customerInfo.brpExpireDate;
-                    customerResponse.customerInfo.userInfo.brpNumber = customerResponse.customerInfo.brpNumber;
-                    customerResponse.customerInfo.userInfo.payment = response.payment;
-                    setUsers([...users, customerResponse?.customerInfo.userInfo]);
+                    customerResponse.customerInfo.brpExpireDate = customerResponse.customerInfo.brpExpireDate;
+                    customerResponse.customerInfo.brpNumber = customerResponse.customerInfo.brpNumber;
+                    customerResponse.customerInfo.user.payment = response.payment;
+                    setUsers([...users, customerResponse?.customerInfo.user]);
                 });
                 setAddressList(addressList);
             })

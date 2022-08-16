@@ -374,12 +374,12 @@ export default function MyClientsCompanyList(props: any) {
                                         <MenuItem value={result}>{result.name}</MenuItem>)) :(<MenuItem value={founder}>{founder}</MenuItem>)}
                                 </TableCell>
                                 <TableCell  padding="default">
-                            {client.customerClients?.length === 1 ? (<Typography>{client.customerClients[0]?.customerInfo.userInfo.name} {client.customerClients[0]?.customerInfo.userInfo.surname}</Typography>):
+                            {client.customerClients?.length === 1 ? (<Typography>{client.customerClients[0]?.customerInfo.user.name} {client.customerClients[0]?.customerInfo.user.surname}</Typography>):
                                 <HtmlTooltip
                                 title={
                                 <React.Fragment>
                             {client.customerClients?.map(user =>(
-                                <Typography color="inherit">{user.customerInfo.userInfo.name} {user.customerInfo.userInfo.surname} %{user.customerInfo.sharePercent}</Typography>
+                                <Typography color="inherit">{user.customerInfo.user.name} {user.customerInfo.user.surname} %{user.customerInfo.sharePercent}</Typography>
                                 ))}
                                 </React.Fragment>
                             }

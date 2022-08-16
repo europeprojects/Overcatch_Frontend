@@ -363,7 +363,7 @@ export interface CustomerInfo {
     brpExpireDate: string;
     brpNumber: string;
     userInfo: UserDTO;
-    // user:UserDTO;
+    user:UserDTO;
     //
 }
 
