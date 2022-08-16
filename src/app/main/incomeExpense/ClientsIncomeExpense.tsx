@@ -283,8 +283,8 @@ function ClientsIncomeExpense(props){
 
         else if(orderBy ==="nameandsurname")
         {
-            const sa = String(a["customerClients"][0]?.customerInfo?.userInfo?.name+" "+a["customerClients"][0]?.customerInfo?.userInfo?.surName).toLowerCase();
-            const sb = String(b["customerClients"][0]?.customerInfo?.userInfo?.name+" "+b["customerClients"][0]?.customerInfo?.userInfo?.surName).toLowerCase();
+            const sa = String(a["customerClients"][0]?.customerInfo?.user?.name+" "+a["customerClients"][0]?.customerInfo?.user?.surName).toLowerCase();
+            const sb = String(b["customerClients"][0]?.customerInfo?.user?.name+" "+b["customerClients"][0]?.customerInfo?.user?.surName).toLowerCase();
            return sb.localeCompare(sa);
         }
        
@@ -452,13 +452,13 @@ function ClientsIncomeExpense(props){
 
                                             <TableCell>
                                                 {row.customerClients?.length === 1 ? (
-                                                        <Typography>{row.customerClients[0]?.customerInfo.userInfo.name} {row.customerClients[0]?.customerInfo.userInfo.surname}</Typography>) :
+                                                        <Typography>{row.customerClients[0]?.customerInfo.user.name} {row.customerClients[0]?.customerInfo.user.surname}</Typography>) :
                                                     <HtmlTooltip
                                                         title={
                                                             <React.Fragment>
                                                                 {row.customerClients?.map(user => (
                                                                     <Typography
-                                                                        color="inherit">{user.customerInfo?.userInfo.name} {user.customerInfo.userInfo.surname}</Typography>
+                                                                        color="inherit">{user.customerInfo?.user.name} {user.customerInfo.user.surname}</Typography>
                                                                 ))}
                                                             </React.Fragment>
                                                         }
