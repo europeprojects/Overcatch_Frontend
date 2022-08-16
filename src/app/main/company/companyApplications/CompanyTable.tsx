@@ -60,7 +60,7 @@ function compare(a,b)
 function descendingComparator(a, b, orderBy) {
         if(orderBy === "clientName")
         {
-                   return String(a.customerClients[0].customerInfo.userInfo.name).toLowerCase().localeCompare(String(b.customerClients[0].customerInfo.userInfo.name).toLowerCase());
+                   return String(a.customerClients[0].customerInfo.user.name).toLowerCase().localeCompare(String(b.customerClients[0].customerInfo.user.name).toLowerCase());
  
         }
         else if(orderBy ==="payment")
@@ -793,9 +793,9 @@ export default function CompanyTable(props: any) {
                                         >
                                             {userRole[0] !== 'CUSTOMER' && (
                                                 <TableCell scope="row">
-                                                    {client?.customerClients[0]?.customerInfo?.userInfo?.name +
+                                                    {client?.customerClients[0]?.customerInfo?.user?.name +
                                                     ' ' +
-                                                    client?.customerClients[0]?.customerInfo?.userInfo?.surname}
+                                                    client?.customerClients[0]?.customerInfo?.user?.surname}
                                                 </TableCell>
                                             )}
 
