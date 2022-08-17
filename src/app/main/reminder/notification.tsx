@@ -514,7 +514,7 @@ export default function EnhancedTable(props) {
 			res => {
 				//setOpen(false);
 				//props.enqueueSnackbar( <h4>{t('NOTIFICATIONSHASBEENSENT')}</h4>,{variant:'success',});
-				window.location.reload(false)
+				window.location.reload()
 				//history.push("/notification");
 			})
 	};
@@ -767,7 +767,10 @@ export default function EnhancedTable(props) {
 														{_.orderBy(notifLOG)
 															.slice(0 * rowsPerPage, 1 * rowsPerPage + rowsPerPage)
 															.map(log => {
-																const logCreatedTime = moment(log?.createdDateTime).format('DD-MM-YYYY,h:mm:ss a');
+																//Bu kısmı commentlememizin sebebi 799. satırdaki tarihlerin gelmemesi
+																//const logCreatedTime = moment(log?.document.createdDateTime).format('DD-MM-YYYY,h:mm:ss a');
+																//console.log(logCreatedTime)
+																console.log("LOGG-------",log)
 																return (
 																	<TableRow
 																		className="cursor-pointer"
@@ -793,7 +796,7 @@ export default function EnhancedTable(props) {
 																				textAlign: 'center'
 																			}}
 																		>
-																			{log?.createdDateTime[2]} / {log?.createdDateTime[1]} / {log?.createdDateTime[0]}
+																			{log?.document.createdDateTime[2]} / {log?.document.createdDateTime[1]} / {log?.document.createdDateTime[0]}
 																		</TableCell>
 																		<TableCell
 																			// className="md:p-16 truncate"
@@ -964,7 +967,7 @@ export default function EnhancedTable(props) {
 																													</TableCell>
 
 																													<TableCell className="md:p-16 truncate" component="th" scope="row">
-																														{ listOfData.customerClients[0].customerInfo.userInfo?.name} {listOfData.customerClients[0].customerInfo.userInfo?.surname}
+																														{ listOfData.customerClients[0].customerInfo.user?.name} {listOfData.customerClients[0].customerInfo.user?.surname}
 																													</TableCell>
 
 																													<TableCell className="md:p-16 truncate" component="th" scope="row">
