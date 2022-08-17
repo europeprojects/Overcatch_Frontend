@@ -106,6 +106,8 @@ const styles = StyleSheet.create({
 		fontFamily: 'Times-Roman',
 		position: 'relative',
 		paddingHorizontal: 35,
+		fontWeight: 'bold',
+		color:'black',
 
 	},
 	text3: {
@@ -114,6 +116,8 @@ const styles = StyleSheet.create({
 		fontFamily: 'Times-Roman',
 		position: 'relative',
 		paddingHorizontal: 35,
+		fontWeight: 'bold',
+		color:'black',
 
 	},
 	image: {
