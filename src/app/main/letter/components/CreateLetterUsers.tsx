@@ -505,10 +505,10 @@ function CreateLetterUsers(props) {
             const director = company[0]?.directorDetails?.find(director => director.id == value)
             setSelectedDirector(director as DirectorDetail)
         }
-        else if(client1?.customerClients?.filter(director => director.customerInfo.userInfo.id == value).length>0) {
+        else if(client1?.customerClients?.filter(director => director.customerInfo.user.id == value).length>0) {
 
             setType("ok2")
-            const director = client1?.customerClients?.find(director => director.customerInfo.userInfo.id == value)
+            const director = client1?.customerClients?.find(director => director.customerInfo.user.id == value)
             setSelectedDirector(director)
         }
         else
@@ -557,10 +557,10 @@ function CreateLetterUsers(props) {
         else
         {
 
-            dynamicInfo.$clientKnownAs$ = client1?.founderOwner ? client1?.founderOwner.tradeAsName :selectedDirector?.customerInfo.userInfo.name + " " + selectedDirector?.customerInfo.userInfo.surname
+            dynamicInfo.$clientKnownAs$ = client1?.founderOwner ? client1?.founderOwner.tradeAsName :selectedDirector?.customerInfo.user.name + " " + selectedDirector?.customerInfo.user.surname
             dynamicInfo.$clientFullName$ = client1?.founderOwner ? client1?.founderOwner?.name + " " + client1?.founderOwner?.surname :
-                selectedDirector?.customerInfo?.userInfo?.name + " " + selectedDirector?.customerInfo?.userInfo?.surname +" owner"
-            dynamicInfo.$clientSurname$ = selectedDirector?.customerInfo?.userInfo?.surname
+                selectedDirector?.customerInfo?.user?.name + " " + selectedDirector?.customerInfo?.user?.surname +" owner"
+            dynamicInfo.$clientSurname$ = selectedDirector?.customerInfo?.user?.surname
             dynamicInfo.$clientDob$ =  (client1?.founderOwner ? client1?.founderOwner?.dob : "")?.toString().replaceAll(",", "/")
         }
 
@@ -826,7 +826,7 @@ function CreateLetterUsers(props) {
                                                   {
                                                       client1?.customerClients?.length > 0 ? (
                                                           client1?.customerClients?.map((result)=>(
-                                                              <MenuItem value={result.customerInfo.userInfo.id}>{result.customerInfo.userInfo.name + " " + result.customerInfo.userInfo.surname + " owner"}</MenuItem>
+                                                              <MenuItem value={result.customerInfo.user.id}>{result.customerInfo.user.name + " " + result.customerInfo.user.surname + " owner"}</MenuItem>
                                                           ))
                                                       ) : null
                                                   }
