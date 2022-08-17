@@ -376,7 +376,7 @@ function ReminderList(props) {
                 props.enqueueSnackbar(<h4>{t("REMINDERUPDATE")}</h4>, {
                     variant: 'warning',
                 })
-                window.location.reload(false)
+                window.location.reload()
             })
         }
     };
@@ -422,6 +422,7 @@ function ReminderList(props) {
         api.getReminder().then( data => {
             console.log('Reminder Tablosundaki Son data :',data);
             setReminder(data);
+            console.log("DATAAA-----", data)
         })
     }, [])
 
@@ -450,7 +451,7 @@ function ReminderList(props) {
                 props.enqueueSnackbar(<h4>{t("REMINDERDELETE")}</h4>, {
                     variant: 'success',
                 })
-                window.location.reload(false)
+                window.location.reload()
             })
         }
     };
@@ -575,6 +576,7 @@ function ReminderList(props) {
                                                         {_.orderBy(reminderTemplates)
                                                             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                                             .map(template => {
+                                                                console.log("TEMPLATE-------", template)
                                                                 // @ts-ignore
                                                                 return (
                                                                     <TableRow
@@ -792,11 +794,11 @@ function ReminderList(props) {
                                                                                                                         <TableCell className="md:p-16 truncate " component="th" scope="row"></TableCell>
 
                                                                                                                         <TableCell align="left" className="md:p-16 truncate " component="th" scope="row">
-                                                                                                                            { client.customerClients?.[0].customerInfo.userInfo?.name} {client.customerClients?.[0].customerInfo.userInfo?.surname}
+                                                                                                                            { client.customerClients?.[0].customerInfo.user?.name} {client.customerClients?.[0].customerInfo.user?.surname}
                                                                                                                         </TableCell>
 
                                                                                                                         <TableCell className="md:p-16 truncate " component="th" scope="row">
-                                                                                                                            { client.customerClients[0].customerInfo.userInfo?.email}
+                                                                                                                            { client.customerClients[0].customerInfo.user?.email}
                                                                                                                         </TableCell>
 
                                                                                                                         <TableCell align="center" className="md:p-16 truncate " component="th" scope="row">
