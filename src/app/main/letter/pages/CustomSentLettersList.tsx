@@ -642,8 +642,8 @@ function CustomSentLettersList(props) {
 
 	const requestSearch = (searchedVal: string) => {
 		const filteredRows = props.data.filter((row) => {
-			const nameSurname = row.client.customerClients[0].customerInfo.userInfo.name +
-				" " + row.client.customerClients[0].customerInfo.userInfo.surname;
+			const nameSurname = row.client.customerClients[0].customerInfo.user.name +
+				" " + row.client.customerClients[0].customerInfo.user.surname;
 			// const companyName = row.client?.company?.name || row.client?.founderOwner?.name;
 			// 	return nameSurname.toLowerCase().includes(searchedVal.toLowerCase()) || companyName.toLowerCase().includes(searchedVal.toLowerCase());
 			return nameSurname.toLowerCase().includes(searchedVal.toLowerCase());
@@ -768,8 +768,8 @@ function CustomSentLettersList(props) {
 												}
 											</TableCell>
 											<TableCell style={{paddingLeft: "10px"}} scope="row" padding="none">
-												{letter.client.customerClients[0].customerInfo.userInfo.name + " " +
-												letter.client.customerClients[0].customerInfo.userInfo.surname}
+												{letter.client.customerClients[0].customerInfo.user.name + " " +
+												letter.client.customerClients[0].customerInfo.user.surname}
 											</TableCell>
 											{/*<TableCell style={{paddingLeft: "10px"}} scope="row" padding="none">*/}
 
@@ -866,9 +866,9 @@ function CustomSentLettersList(props) {
 				{/*						<div>*/}
 				{/*							<div className="my-8 flex justify-end">*/}
 				{/*								{*/}
-				{/*									confirmations.personel.userInfo.name*/}
+				{/*									confirmations.personel.user.name*/}
 				{/*									+ " " +*/}
-				{/*									confirmations.personel.userInfo.surname*/}
+				{/*									confirmations.personel.user.surname*/}
 				{/*								}*/}
 				{/*							</div>*/}
 				{/*							<div className="my-8 flex justify-end">*/}
