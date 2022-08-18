@@ -118,6 +118,9 @@ const locale = {
     SELECTCOMPANY:'Lütfen şirket seçiniz!',
     CREATE:'Oluştur',
     SHOWDIVIDEND:'Dividend Göster',
+    HOMEERROR:'Adres Bilgisi Yok!',
+    HOMEERRORCONTENT:'Bu kullanıcının HOME ADRES bilgisi olmadığından DIVIDED oluşturamıyorsunuz!',
+    CANCEL:'Kapat',
 
     //SoleTrade
     REMINDERDATE1:'İlk Hatırlatma tarihi',
