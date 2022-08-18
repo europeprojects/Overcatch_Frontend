@@ -6,9 +6,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ContactsMultiSelectMenu from "../user/ContactsMultiSelectMenu";
 import ContactsTable from "../user/components/UITable";
-import {openEditContactDialog, selectContacts,} from "../user/store/contactsSlice";
+import {openEditContactDialog, selectContacts} from "../user/store/contactsSlice";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
+import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from "@material-ui/core/DialogContent";
 import { createStyles, useTheme } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
@@ -80,6 +81,11 @@ function CreateDividedUser(props) {
     const [progress, setProgress] = React.useState(0);
     const [divided,setDivided] = useState<Divided>({} as Divided);
     const { enqueueSnackbar } = useSnackbar();
+
+    ///Home bilgisi olmayanlar için hata diyaloğu için tanımladı.
+    const [homeError,setHomeError] = useState(false);
+
+   
 
     const handleCreateDivided = (e,row) => {
         e.stopPropagation();
@@ -235,7 +241,11 @@ function CreateDividedUser(props) {
 
     function deneme(propsDeneme) {
         api.getCompaniesByUserId(propsDeneme.id).then((res) => {
+            console.log("------RES-------", res.length)
             setClient(res);
+            if(res.length === 0){
+                setHomeError(true)
+            }else{
             res.map((x) => {
                 if (x.state !== "3") {
                     props.enqueueSnackbar(
@@ -268,9 +278,11 @@ function CreateDividedUser(props) {
                     }
                 }
             });
-        });
-        setProgress(0)
-        setOpen(true);
+            setProgress(0)
+            setOpen(true);
+        }
+    });
+       
     }
 
     const progressCallback = (loaded: number, total: number) => {
@@ -385,6 +397,10 @@ function CreateDividedUser(props) {
        // const director = client1?.company?.directorDetails?.length>0?client1?.company?.directorDetails.find(director => director.id = value): client1?.customerClients?.find(director => director.id = value);
     };
 
+    const handleCloseHomeError = () => {
+        setHomeError(false);
+      };
+
     return (
         
         <div>
@@ -402,6 +418,20 @@ function CreateDividedUser(props) {
                 </FuseAnimate>
                 <div></div>
             </Div>
+            <Dialog 
+            open={homeError}
+                onClose={()=>{
+                    setHomeError(false)
+                    setCompany([]);
+                }}
+                aria-labelledby="alert-dialog-slide-title"
+                aria-describedby="alert-dialog-slide-description">
+                <DialogTitle>{t("HOMEERROR")} </DialogTitle>
+                <DialogContent>{t("HOMEERRORCONTENT")}</DialogContent>
+                <DialogActions>
+          <Button onClick={handleCloseHomeError}>{t("CANCEL")}</Button>
+        </DialogActions>
+            </Dialog>
             <Dialog
                 open={open}
                 onClose={()=>{

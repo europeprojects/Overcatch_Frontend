@@ -119,6 +119,9 @@ const locale = {
     CREATE:'Create',
     CREATEDDIVIDEND:'Created Dividends',
     SHOWDIVIDEND:'Show Dividend',
+    HOMEERROR:'Address Error!',
+    HOMEERRORCONTENT:'This client has no HOME ADDRESS information!',
+    CANCEL:'Cancel',
 
     //SoleTrade
     REMINDERDATE1:'First Reminder Date',
