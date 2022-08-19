@@ -138,7 +138,11 @@ const locale = {
     REMINDERTYPE:'Hatırlatılacak Mail Şablonu',
     REMINDERTYPESELECT:'Hatırlatılacak Mail Şablonu Seçim Alanı',
     REMINDER:'Hatırlatma E-postasına yanıt veren kullanıcı sayısı',
-    REMINDERTEMPLATEDATE:'Hatırlatma tarihleri aynı olmamalıdır !'
+    REMINDERTEMPLATEDATE:'Hatırlatma tarihleri aynı olmamalıdır !',
+
+    //letterde bilgi eksikliği için verilen alert
+    HOMEERROR:'Adres bilginizi kontrol ediniz.',
+    HOMEERRORCONTENT:'Adres ve diğer bilgilerinizde eksiklik olduğunuzu düşünüyorsanız bilgilerinizi Şirket Bilgileri modülünden günceleyiniz.'
 };
 
 export default locale;

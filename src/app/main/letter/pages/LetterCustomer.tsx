@@ -109,6 +109,9 @@ function LetterCustomer(props: any) {
     const [progress, setProgress] = React.useState(0);
     const [file, setFile] = React.useState<File>(null);
 
+     ///Home bilgisi olmayanlar için hata diyaloğu için tanımladı.
+     const [homeError,setHomeError] = useState(false);
+
     useEffect(()=> {
         console.log("letter use effect")
         console.log("use effect", entries)
@@ -227,7 +230,7 @@ function LetterCustomer(props: any) {
 
 
     function getAddressByAddressType(addressType){
-        var address = client?.addressList?.find(address => address.addressType.toString() == addressType)
+        var address = client?.addressList?.find(address => address?.addressType?.toString() == addressType)
         var address1 = address?.number ? address?.number : null +
         " " +
         address?.street  ? address?.street : null+
@@ -240,8 +243,13 @@ function LetterCustomer(props: any) {
         return address1
     }
 
+    const handleCloseHomeError = () => {
+        setHomeError(false);
+      };
 
     function onPreview2() {
+
+        
         // dynamicInfo.heshe = (client.founderOwner?.sex === "true" || client.company?.directorDetails[0].sex) ? ("he") : ("she")
         // dynamicInfo.HeShe = (client.founderOwner?.sex === "true" || client.company?.directorDetails[0].sex) ? ("He") : ("She")
         // dynamicInfo.hisher = (client.founderOwner?.sex === "true" || client.company?.directorDetails[0].sex) ? ("his") : ("her")
@@ -348,7 +356,7 @@ function LetterCustomer(props: any) {
                 })
             )
         );
-
+        setHomeError(true)
         //@ts-ignore
         setSelectedValue(Yedekletter)
         // setOpen(true)
@@ -356,6 +364,7 @@ function LetterCustomer(props: any) {
         setDisabled(false)
         setDisplayNone(false)
         setOpenDialog(true)
+       
     }
 
     const handleChangeName = (e) =>{
@@ -535,7 +544,7 @@ function LetterCustomer(props: any) {
                                             {
                                                 client?.customerClients?.length > 0 ? (
                                                     client?.customerClients?.map((result)=>(
-                                                        <MenuItem value={result?.id} >{result?.customerInfo?.userInfo?.name + " " + result?.customerInfo?.userInfo?.surname + " owner"}</MenuItem>
+                                                        <MenuItem value={result?.id} >{result?.customerInfo?.user?.name + " " + result?.customerInfo?.user?.surname + " owner"}</MenuItem>
                                                     ))
                                                 ) : null
                                             }
@@ -567,6 +576,20 @@ function LetterCustomer(props: any) {
                               <Button variant="contained" color="primary" className="ml-10"
                                       onClick={onCreateRequest} disabled={disabled} style={displayNone ? {display:"none"} : null}>{t("CREATEREQUEST")} </Button>)}
 
+<Dialog 
+            open={homeError}
+                onClose={()=>{
+                    setHomeError(false)
+                    
+                }}
+                aria-labelledby="alert-dialog-slide-title"
+                aria-describedby="alert-dialog-slide-description">
+                <DialogTitle>{t("HOMEERROR")} </DialogTitle>
+                <DialogContent>{t("HOMEERRORCONTENT")}</DialogContent>
+                <DialogActions>
+          <Button onClick={handleCloseHomeError}>{t("CANCEL")}</Button>
+        </DialogActions>
+            </Dialog>
                         </div>
 
 
