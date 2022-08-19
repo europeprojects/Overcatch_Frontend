@@ -14,6 +14,8 @@ import {
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogTitle from '@material-ui/core/DialogTitle';
 import { Div } from "../../../components/Grid";
 import { createStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
@@ -167,6 +169,9 @@ function CreateLetterUsers(props) {
         clientType: null,
         userRole: null
     })
+
+        ///Home bilgisi olmayanlar için hata diyaloğu için tanımladı.
+        const [homeError,setHomeError] = useState(false);
 
     // const [Yedekletter, setYedekLetter] = useState([])
 
@@ -639,11 +644,22 @@ function CreateLetterUsers(props) {
 
         setOpenDialog(true)
     }
+    
+ 
+
+     const handleCloseHomeError = () => {
+        setHomeError(false);
+      };
 
     function deneme(propsDeneme) {
 
         api.getCompaniesByUserId(propsDeneme.id).then((res) => {
             setClient(res);
+            console.log("----RES----", res)
+            console.log("----RES----", res.length)
+           if(res.length === 0){
+            setHomeError(true)
+           }else{
             res.map((x) => {
                 if (x.state !== "3") {
                     props.enqueueSnackbar(
@@ -655,9 +671,10 @@ function CreateLetterUsers(props) {
                       }
                     );
                     history.push("/clientapplist");
-                } else {
+                }else {
                     if (x.clientTypeEnum == "LIMITED") {
                         api.getCompanyByClientId(x.id).then((response) => {
+                            console.log("----lımıted----", response)
                             setCompany((company) => [...company, response.company]);
                             setClient1(response);
                             getLetterTypes(response?.clientTypeEnum.toString())
@@ -666,6 +683,7 @@ function CreateLetterUsers(props) {
                         });
                     } else {
                         api.getClient(x.id).then((resp) => {
+                            console.log("----RESP----", resp)
                             setClient1(resp);
                             getLetterTypes(resp?.clientTypeEnum.toString())
                             const { addressList } = resp;
@@ -678,10 +696,11 @@ function CreateLetterUsers(props) {
                     }
                 }
             });
-        });
-        setProgress(0)
-        setOpen(true);
-    }
+            setProgress(0)
+            setOpen(true);
+        }}
+        );
+        }
 
     const getCompaniesByClientId = () => {
 
@@ -746,6 +765,22 @@ function CreateLetterUsers(props) {
               </FuseAnimate>
               <div></div>
           </Div>
+
+          <Dialog
+            open={homeError}
+                onClose={()=>{
+                    setHomeError(false)
+                    setCompany([]);
+                }}
+                aria-labelledby="alert-dialog-slide-title"
+                aria-describedby="alert-dialog-slide-description">
+                <DialogTitle>{t("HOMEERROR")} </DialogTitle>
+                <DialogContent>{t("HOMEERRORCONTENTLETTER")}</DialogContent>
+                <DialogActions>
+          <Button onClick={handleCloseHomeError}>{t("CANCEL")}</Button>
+        </DialogActions>
+            </Dialog>
+          
           <Dialog
             fullScreen
             TransitionComponent={Transition}

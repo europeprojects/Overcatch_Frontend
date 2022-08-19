@@ -121,6 +121,9 @@ const locale = {
     HOMEERROR:'Adres Bilgisi Yok!',
     HOMEERRORCONTENT:'Bu kullanıcının HOME ADRES bilgisi olmadığından DIVIDED oluşturamıyorsunuz!',
     CANCEL:'Kapat',
+    
+    //letter
+    HOMEERRORCONTENTLETTER:'Bu kullanıcının HOME ADRES bilgisi olmadığından LETTER oluşturamıyorsunuz!',
 
     //SoleTrade
     REMINDERDATE1:'İlk Hatırlatma tarihi',
