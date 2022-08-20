@@ -123,6 +123,10 @@ const locale = {
     HOMEERRORCONTENT:'This client has no HOME ADDRESS information!',
     CANCEL:'Cancel',
 
+    //letter
+    HOMEERRORCONTENTLETTER:'This client has no HOME ADDRESS information!',
+
+
     //SoleTrade
     REMINDERDATE1:'First Reminder Date',
     REMINDERDATE2:'Second Reminder Date',
