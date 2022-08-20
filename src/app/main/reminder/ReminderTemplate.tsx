@@ -876,6 +876,9 @@ function ReminderTemplate(props: any) {
                                                             variant="outlined"
                                                             name={"helpType"}
                                                             id="demo-simple-select-outlined"
+                                                            InputLabelProps={{
+                                                                shrink: true,
+                                                              }}
                                                             label={t('REMINDERTYPE')}
                                                             disabled={true}
                                                             value={reminder?.reminderType?.reminderTypeName}
