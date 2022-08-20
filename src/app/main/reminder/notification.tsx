@@ -796,7 +796,7 @@ export default function EnhancedTable(props) {
 																				textAlign: 'center'
 																			}}
 																		>
-																			{log?.document.createdDateTime[2]} / {log?.document.createdDateTime[1]} / {log?.document.createdDateTime[0]}
+																			{log?.document?.createdDateTime[2]} / {log?.document?.createdDateTime[1]} / {log?.document?.createdDateTime[0]}
 																		</TableCell>
 																		<TableCell
 																			// className="md:p-16 truncate"
