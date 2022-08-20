@@ -144,7 +144,11 @@ const locale = {
     REMINDERTYPE:'Email Template to Remind',
     REMINDERTYPESELECT:'Mail Template Selection to Remind',
     REMINDER:'Number of users who responded to the Reminder Email',
-    REMINDERTEMPLATEDATE:'Reminder dates should not be the same !'
+    REMINDERTEMPLATEDATE:'Reminder dates should not be the same !',
+
+        //letterde bilgi eksikliği için verilen alert
+        HOMEERROR:'Check your address information.',
+        HOMEERRORCONTENT:'If you think you are missing your address and other information, please update your information from the Company Information module.'
 };
 
 export default locale;
