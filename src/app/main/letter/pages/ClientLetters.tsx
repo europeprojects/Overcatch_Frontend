@@ -882,9 +882,9 @@ function TaskList(props: any) {
                                                     <div>
                                                         <div className="my-8 flex justify-end">
                                                             {
-                                                                confirmations.personel.userInfo.name
+                                                                confirmations?.personel?.userInfo?.name
                                                                 + " " +
-                                                                confirmations.personel.userInfo.surname
+                                                                confirmations?.personel?.userInfo?.surname
                                                             }
                                                         </div>
                                                         <div className="my-8 flex justify-end">
