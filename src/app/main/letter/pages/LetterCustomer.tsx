@@ -235,7 +235,7 @@ function LetterCustomer(props: any) {
         " " +
         address?.street  ? address?.street : null+
         " " +
-        address?.county  ? address?.county : null+
+        address?.country  ? address?.country : null+
         " " +
         address?.city  ? address?.city : null+
         " " +
